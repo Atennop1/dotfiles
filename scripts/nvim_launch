@@ -1,0 +1,44 @@
+#!/bin/bash
+# script for launching nvim in pair with alacritty and tmux
+
+FILE="$1"
+FILE=$(printf '%b' "${FILE//%/\\x}")
+SESSION="default"
+TERM="alacritty"
+WORKDIR="$HOME/work"
+
+alacritty_window_exists() {
+    if xdotool search --classname alacritty >/dev/null 2>&1; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+open_in_tmux() {
+    local target_file="$1"
+
+    if ! alacritty_window_exists; then
+        notify-send "opening" "neovim..."
+        FROM_ROFI=0 "$TERM" --working-directory "$WORKDIR" -e tmux attach-session -t "$SESSION" &
+    fi
+
+    if [ -n "$target_file" ]; then
+        FROM_ROFI=0 tmux new-window -t "$SESSION" -n nvim "nvim '$target_file'"
+    else
+        FROM_ROFI=0 tmux new-window -t "$SESSION" -n nvim "nvim"
+    fi
+
+    wmctrl -xa Alacritty >/dev/null 2>&1 || true
+}
+
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+    open_in_tmux "$FILE"
+else
+    notify-send "opening" "neovim..."
+    if [ -n "$FILE" ]; then
+        FROM_ROFI=0 "$TERM" --working-directory "$WORKDIR" -e tmux new-session -s "$SESSION" "nvim '$FILE'" &
+    else
+        FROM_ROFI=0 "$TERM" --working-directory "$WORKDIR" -e tmux new-session -s "$SESSION" "nvim" &
+    fi
+fi

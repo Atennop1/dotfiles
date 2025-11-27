@@ -1,0 +1,16 @@
+[user]
+	name = Atennop1
+	email = atennop@gmail.com
+[init]
+	defaultbranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/atennop/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/atennop/.local/bin/gh auth git-credential
+[pull]
+	rebase = true
+[credential]
+	credentialStore = cache
+	gitHubAccountFiltering = false

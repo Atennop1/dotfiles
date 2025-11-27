@@ -1,0 +1,4 @@
+! Назначаем левый Win как модификатор
+clear Mod4
+keycode 133 = ISO_Next_Group
+add Mod4 = ISO_Next_Group

@@ -1,0 +1,4 @@
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:copy
+Xft.dpi: 96

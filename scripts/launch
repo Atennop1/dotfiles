@@ -1,0 +1,25 @@
+#!/bin/bash
+# script for launching apps with autofocus on them in i3
+
+APP="$1"
+shift
+ARGS=("$@")
+
+# if opening from rofi then do nothing
+if [ "$FROM_ROFI" -eq 1 ]; then
+    export FROM_ROFI=0
+    "$APP" "${ARGS[@]}" &
+    exit 
+fi
+
+# if not, then send notification and focus on opened window
+"$APP" "${ARGS[@]}" &
+notify-send "opening" "$(basename $APP)..."
+for i in {1..20}; do  
+    URGENT_ID=$(i3-msg -t get_tree | jq '.. | objects | select(.urgent==true) | .id' | head -n1)
+    if [ -n "$URGENT_ID" ]; then
+        i3-msg "[con_id=$URGENT_ID]" focus
+        break
+    fi
+    sleep 0.1
+done

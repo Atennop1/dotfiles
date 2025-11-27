@@ -1,0 +1,33 @@
+#!/bin/bash
+# script for auto-mounting of plugged usb sticks
+
+DEV="/dev/$1"
+eval "$(udevadm info --query=property --name="$DEV" | grep '^ID_FS_')"
+
+if [[ -n "$ID_FS_LABEL" ]]; then
+    MNT="/mnt/$ID_FS_LABEL"
+elif [[ -n "$ID_FS_UUID" ]]; then
+    MNT="/mnt/$ID_FS_UUID"
+else
+    MNT="/mnt/$(basename "$DEV")"
+fi
+
+mkdir -p "$MNT"
+FS=$(lsblk -no FSTYPE "$DEV")
+
+case "$FS" in
+vfat | fat32 | msdos)
+    mount -t vfat -o uid=1000,gid=1000,umask=022 "$DEV" "$MNT"
+    ;;
+exfat)
+    mount -t exfat -o uid=1000,gid=1000 "$DEV" "$MNT"
+    ;;
+ntfs)
+    mount -t ntfs3 -o uid=1000,gid=1000,umask=022 "$DEV" "$MNT"
+    ;;
+*)
+    exit 1
+    ;;
+esac
+
+exit 0

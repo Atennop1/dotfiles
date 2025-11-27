@@ -1,0 +1,26 @@
+#!/bin/bash
+# custom script for opening apps using MIME types with sending notifications
+
+INPUT="$1"
+INPUT=$(printf '%b' "${INPUT//%/\\x}") # for russian letters support
+
+if [[ "$INPUT" =~ ^file:// ]]; then
+    INPUT=${INPUT:7} 
+fi
+
+if [[ "$INPUT" =~ ^(http|https|ftp):// ]]; then
+    /usr/bin/xdg-open-original "$INPUT" 
+elif [ -e "$INPUT" ]; then
+    MIME_TYPE=$(xdg-mime query filetype "$INPUT")
+    DEFAULT_APP=$(xdg-mime query default "$MIME_TYPE")
+
+    if [ -z "$DEFAULT_APP" ]; then
+        notify-send "warning" "there is no app for this type of file, so opening it in neovim"
+        /home/atennop/.local/bin/nvim_launch $INPUT
+    else
+        /usr/bin/xdg-open-original "$INPUT"
+    fi
+else
+    notify-send "error" "path does not exist: $INPUT"
+fi
+

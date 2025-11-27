@@ -1,0 +1,9 @@
+#!/bin/bash
+# script for autounmounting usb sticks
+
+DEV="/dev/$1"
+MNT=$(findmnt -no TARGET -S "$DEV")
+
+umount "$MNT"
+rmdir "$MNT"
+exit 0

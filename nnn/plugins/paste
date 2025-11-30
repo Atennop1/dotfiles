@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+{
+    paths=$(xclip -o -selection clipboard -t text/uri-list 2>/dev/null)
+
+    if [ -n "$paths" ]; then
+        while read -r uri; do
+            file="${uri#file://}"
+            cp -r -- "$file" .
+        done <<<"$paths"
+        exit 0
+    fi
+
+    if xclip -selection clipboard -t TARGETS -o | grep -q 'image/'; then
+        filename="clip_$(date +%Y%m%d_%H%M%S).png"
+        xclip -selection clipboard -t image/png -o >"$filename"
+        exit 0
+    fi
+} >/dev/null 2>&1 &

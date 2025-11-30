@@ -1,0 +1,18 @@
+# plugins
+export NNN_PLUG="c:copy;p:paste"
+export NNN_CLIP="xclip -selection clipboard -in"
+export NNN_OPTS="A"
+
+#colors
+export NNN_COLORS="4444"
+export NNN_FCOLORS="e2"
+export NNN_FCOLORS="$NNN_FCOLORS""00"
+export NNN_FCOLORS="$NNN_FCOLORS""6e"
+export NNN_FCOLORS="$NNN_FCOLORS""4c"
+export NNN_FCOLORS="$NNN_FCOLORS""bc"
+export NNN_FCOLORS="$NNN_FCOLORS""bc"
+export NNN_FCOLORS="$NNN_FCOLORS""b7"
+export NNN_FCOLORS="$NNN_FCOLORS""00"
+export NNN_FCOLORS="$NNN_FCOLORS""00"
+export NNN_FCOLORS="$NNN_FCOLORS""00"
+export NNN_FCOLORS="$NNN_FCOLORS""00"

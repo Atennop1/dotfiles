@@ -1,0 +1,36 @@
+[Default Applications]
+text/plain=nvim.desktop
+text/markdown=nvim.desktop
+text/x-csrc=nvim.desktop
+text/x-c++src=nvim.desktop
+text/x-go=nvim.desktop
+text/x-python=nvim.desktop
+text/x-shellscript=nvim.desktop
+application/x-shellscript=nvim.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=onlyoffice-desktopeditors.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.text=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.spreadsheet=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.presentation=onlyoffice-desktopeditors.desktop
+image/png=mpv.desktop
+image/jpeg=mpv.desktop
+image/webp=mpv.desktop
+image/svg+xml=mpv.desktop
+audio/mpeg=mpv.desktop
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+application/pdf=firefox.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+inode/directory=nvim.desktop
+inode/mount-point=nvim.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-QXGFG3.desktop
+x-scheme-handler/tonsite=userapp-Telegram Desktop-BRBGG3.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-278MG3.desktop;userapp-Telegram Desktop-QXGFG3.desktop;
+x-scheme-handler/tonsite=userapp-Telegram Desktop-STHNG3.desktop;userapp-Telegram Desktop-BRBGG3.desktop;

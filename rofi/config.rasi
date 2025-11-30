@@ -1,0 +1,14 @@
+* {
+font: "Iosevka Regular 17";
+background: #1c1c1c;
+foreground: #e4e4ef;
+            alternate-normal-background: var(background);
+            alternate-normal-foreground: var(foreground);
+}
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+    disable-history: true;
+    drun-display-format: "{name}";
+}

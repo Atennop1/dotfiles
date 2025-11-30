@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+{
+    SELFILE="${NNN_SEL:-$HOME/.config/nnn/.selection}"
+    if [ -f "$SELFILE" ] && [ -s "$SELFILE" ]; then
+        files=$(cat "$SELFILE" | tr '\n' '\0')
+        echo "" >"$SELFILE"
+    else
+        files=$(printf "%s" "$PWD/$nnn")
+    fi
+
+    [ -z "$files" ] && exit 0
+    printf "%s" "$files" |
+        xargs -0 -I{} realpath "{}" |
+        sed 's|^|file://|' |
+        xclip -i -selection clipboard -t text/uri-list
+} >/dev/null 2>&1 &

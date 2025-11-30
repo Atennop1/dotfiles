@@ -1,0 +1,41 @@
+# nice colors
+colors:
+  primary:
+    background: '#181818'
+    foreground: '#e4e4ef'
+
+  normal:
+    black:   '#181818'
+    red:     '#f43841'
+    green:   '#73c936'
+    yellow:  '#ffdd33'
+    blue:    '#96a6c8'
+    magenta: '#9e95c7'
+    cyan:    '#95a99f'
+    white:   '#fdf6e3'
+
+  bright:
+    black:   '#282828'
+    red:     '#ff5f5f'
+    green:   '#a6e22e'
+    yellow:  '#f0c674'
+    blue:    '#6fb3d2'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#ffffff'
+
+# partial terminal transparency
+window:
+  opacity: 0.85
+
+# xterm256 compatible colors
+env:
+  TERM: xterm-256color
+  COLORTERM: truecolor
+
+# legendary Iosevka font
+font:
+  normal:
+    family: "Iosevka"
+    style: Regular
+  size: 16

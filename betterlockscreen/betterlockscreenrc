@@ -1,0 +1,21 @@
+# colors
+color_ring=96a6c8
+color_ring_wrong=f43841
+color_ring_ver=96a6c8
+color_ring_clear=181818
+color_line=181818
+color_separator=181818
+color_inside=181818
+color_inside_ver=181818
+color_inside_wrong=181818
+color_text=e4e4ef
+color_date=f5f580
+color_time=f5f580
+time_format="%H:%M"
+
+# font and other tweaks
+font="FiraCode Nerd Font"
+font_size=14
+time_font_size=24
+date_font_size=14
+

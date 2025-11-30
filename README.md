@@ -6,16 +6,16 @@ This repository contains complete (almost) snapshot of my config files and overa
 <img alt="image" src="https://github.com/user-attachments/assets/b1653cdf-677a-45cf-9506-138c20109916" />
 
 ## more about setup
-**Distro:** Debian 12 bookworm
-**DE:** its for weak!
-**WM:** i3wm
-**DM:** LightDM
-**Compositor:** picom
-**App Launcher:** rofi
-**Explorer:** nnn
-**Terminal:** alacritty
-**Terminal Multiplexer:** tmux
-**Text Editor:** neovim
+- **Distro:** Debian 12 bookworm
+- **DE:** its for weak!
+- **WM:** i3wm
+- **DM:** LightDM
+- **Compositor:** picom
+- **App Launcher:** rofi
+- **Explorer:** nnn
+- **Terminal:** alacritty
+- **Terminal Multiplexer:** tmux
+- **Text Editor:** neovim
 
 
 It's also important to note that there are bunch of other little things that I'm too lazy to talk about, but you can just lurk inside these dotfiles and find them out yourself :)

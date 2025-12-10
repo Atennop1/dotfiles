@@ -16,6 +16,7 @@ This repository contains complete (almost) snapshot of my config files and overa
 - **Terminal:** alacritty
 - **Terminal Multiplexer:** tmux
 - **Text Editor:** neovim
+- **GRUB Theme:** [**cybergrub-2077**](https://github.com/adnksharp/CyberGRUB-2077)
 
 
 It's also important to note that there are bunch of other little things that I'm too lazy to talk about, but you can just lurk inside these dotfiles and find them out yourself :)

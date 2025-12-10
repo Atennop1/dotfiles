@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# getting status from files
 status=$(cat /sys/class/power_supply/BAT*/status)
 capacity=$(cat /sys/class/power_supply/BAT*/capacity)
 
+# selecting color depending on status
 if [ "$status" = "Charging" ]; then
     color="#00FF00"
 elif [ "$capacity" -le 20 ]; then

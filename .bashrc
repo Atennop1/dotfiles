@@ -84,6 +84,6 @@ export GOPATH="$HOME/.local/share/go"
 export PATH=$PATH:$GOPATH/bin
 
 # nnn
-if [ -f ~/.config/env/nnn.sh ]; then
+if [ -f ~/.config/nnn/.nnnrc ]; then
     source ~/.config/nnn/.nnnrc
 fi

@@ -51,9 +51,6 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 -- make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- allow hidden buffers so you can switch without saving
-vim.opt.hidden = true
-
 -- jump stack navigation
 vim.keymap.set('n', '<leader>o', '<C-o>', { desc = "Jump back" })
 vim.keymap.set('n', '<leader>i', '<C-i>', { desc = "Jump forward" })
@@ -63,7 +60,3 @@ vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = "Close buffer" })
 vim.keymap.set('n', '<leader>bd!', ':bd!<CR>', { desc = "Force close buffer" })
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = "Next buffer" })
 vim.keymap.set('n', '<leader>bp', ':bprev<CR>', { desc = "Previous buffer" })
-
--- obsidian
-vim.api.nvim_set_keymap('n', '<leader>nn', ':ObsidianNewFromTemplate ',
-    { noremap = true })

@@ -54,6 +54,7 @@ cpp						install
 cpp-12						install
 cron						install
 cron-daemon-common				install
+curl						install
 dash						install
 dbus						install
 dbus-bin					install
@@ -301,6 +302,7 @@ libctf-nobfd0:amd64				install
 libctf0:amd64					install
 libcups2:amd64					install
 libcurl3-gnutls:amd64				install
+libcurl4:amd64					install
 libcwidget4:amd64				install
 libdaemon0:amd64				install
 libdatrie1:amd64				install

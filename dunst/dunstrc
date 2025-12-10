@@ -1,4 +1,5 @@
 [global]
+# colors and font
 background = "#1c1c1c"
 foreground = "#e4e4e4"
 frame_color = "#444444"
@@ -8,16 +9,19 @@ font = "Iosevka 13"
 offset = 10x30
 
 [urgency_low]
+# settings for minor notifications
 background = "#1c1c1c"
 foreground = "#e4e4e4"
 frame_color = "#444444"
 
 [urgency_normal]
+# settings for average notifications
 background = "#1c1c1c"
 foreground = "#e4e4e4"
 frame_color = "#444444"
 
 [urgency_critical]
+# settings for critical notifications
 background = "#1c1c1c"
 foreground = "#ff6c60"
 frame_color = "#ff6c60"

@@ -1,9 +1,13 @@
 require 'nvim-treesitter.configs'.setup {
-    sync_install = false, -- don't block on install
-    auto_install = true,  -- install missing parsers automatically
+    -- don't block on install
+    sync_install = false,
 
+    -- install missing parsers automatically
+    auto_install = true,
+
+    -- enable Treesitter highlighting
     highlight = {
-        enable = true, -- enable Treesitter highlighting
+        enable = true,
         additional_vim_regex_highlighting = false,
     },
 }

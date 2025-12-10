@@ -14,7 +14,7 @@ vim.cmd([[colorscheme gruber-darker]])
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "mason",
     callback = function()
-        vim.api.nvim_win_set_option(0, "winhighlight", "Normal:MasonTransparent,NormalFloat:MasonTransparent")
+        vim.api.nvim_win_set_option(0, "winhighlight", "Normal:Mason,NormalFloat:Mason")
     end,
 })
 
@@ -24,7 +24,7 @@ local groups = {
     "Normal", "NormalNC",
 
     -- mason
-    "MasonTransparent",
+    "Mason",
 
     -- telescope
     "TelescopeNormal", "TelescopeBorder",

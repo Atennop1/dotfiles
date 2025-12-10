@@ -12,15 +12,15 @@ local target_file = nil
 if file_arg ~= "" and file_arg ~= vim.NIL then
     local resolved = vim.fn.resolve(file_arg)
     if vim.fn.isdirectory(resolved) == 0 and vim.fn.filereadable(resolved) == 1 then
-        -- argument is a real file
+        -- if argument is a real file
         target_file = resolved
         base_dir = vim.fn.fnamemodify(resolved, ":p:h")
     else
-        -- argument is a directory or non-existent, use it as base_dir
+        -- if argument is a directory or non-existent
         base_dir = vim.fn.fnamemodify(resolved, ":p")
     end
 else
-    -- no argument, fallback to cwd
+    -- if no argument
     base_dir = vim.fn.getcwd()
 end
 

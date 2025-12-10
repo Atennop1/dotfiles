@@ -1,6 +1,9 @@
 -- leader
 vim.g.mapleader = " "
 
+-- allow hidden buffers so you can switch without saving
+vim.opt.hidden = true
+
 -- hide ~ at end of buffer
 vim.opt.fillchars = { eob = " " }
 

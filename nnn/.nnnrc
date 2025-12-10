@@ -1,9 +1,13 @@
 # plugins
 export NNN_PLUG="c:copy;p:paste"
+
+# setting up system clipboard
 export NNN_CLIP="xclip -selection clipboard -in"
+
+# showing hidden files by default
 export NNN_OPTS="A"
 
-#colors
+# colors
 export NNN_COLORS="4444"
 export NNN_FCOLORS="e2"
 export NNN_FCOLORS="$NNN_FCOLORS""00"

@@ -1,9 +1,11 @@
+-- require packages
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
+-- setup looking
 telescope.setup {
     defaults = {
-        borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, -- square borders
+        borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
         sorting_strategy = "ascending",
         layout_strategy = "flex",
     },

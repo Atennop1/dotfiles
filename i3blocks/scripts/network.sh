@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# grepping data from nmcli
 wifi_connected=$(nmcli -t -f DEVICE,TYPE,STATE dev | grep ":wifi:connected")
 eth_connected=$(nmcli -t -f DEVICE,TYPE,STATE dev | grep ":ethernet:connected")
 
+# choosing colors
 if [ -n "$wifi_connected" ]; then
     wifi=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d: -f2)
     echo "Connection: $wifi"

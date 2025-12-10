@@ -1,4 +1,4 @@
--- mason setup (auto-install LSP servers)
+-- setup mason looking
 require("mason").setup({
     ui = {
         border = "single",
@@ -10,6 +10,7 @@ require("mason").setup({
     }
 })
 
+-- setup mason auto-installation of plugins
 require("mason-lspconfig").setup({
     automatic_installation = true,
 })
@@ -63,7 +64,7 @@ vim.diagnostic.config({
     update_in_insert = true,
 })
 
--- optional keymaps to jump between errors
+-- keymaps to jump between errors
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 

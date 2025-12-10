@@ -1,28 +1,25 @@
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# dont for window titles 
 font pango:monospace 8
 
-# Start XDG autostart .desktop files using dex. 
+# start XDG autostart .desktop files using dex 
 exec --no-startup-id dex --autostart --environment i3
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# start NetworkManager 
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
+# pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# drag floating windows to their wanted position
 floating_modifier $mod
 
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
+# move tiling windows via drag & drop 
 tiling_drag modifier titlebar
 
 # kill focused window
@@ -34,7 +31,7 @@ bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
-# alternatively, you can use the cursor keys:
+# focus with the cursor keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -46,7 +43,7 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
+# move use the cursor keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -70,8 +67,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# names for default workspaces 
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -109,17 +105,16 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+# restart i3 inplace 
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+
+# exit i3 
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# resize window 
 mode "resize" {
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # keywords for resizing
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -139,14 +134,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# i3bar to display a workspace bar 
 bar {
         separator_symbol " | "
         status_command i3blocks
 }
-
-### MY CONFIGS
 
 # aliases
 bindsym Mod4+Tab focus next
@@ -155,15 +147,11 @@ bindsym $mod+KP_End layout toggle split
 bindsym $mod+KP_Down layout tabbed
 bindsym $mod+KP_Next layout stacking
 
-# brightness
-bindsym F11 exec --no-startup-id brightnessctl set 10%-
-bindsym F12 exec --no-startup-id brightnessctl set +10%
-
 # layout
 workspace_layout tabbed
 
 # terminal
-bindsym $mod+Return exec alacritty --working-directory ~/work -e tmux new-session -A -s default
+bindsym $mod+Return exec alacritty --working-directory ~/projects -e tmux new-session -A -s default
 
 # rofi 
 bindsym $mod+d exec env FROM_ROFI=1 rofi -show drun 
@@ -174,7 +162,7 @@ bindsym $mod+s exec env FROM_ROFI=1 rofi -show drun -drun-categories "Settings"
 # language
 exec_always setxkbmap -layout us,ru -option grp:alt_shift_toggle
 
-# screenshots
+# screenshot
 bindsym Print exec flameshot full -c
 bindsym Mod4+Shift+S exec flameshot gui
 
@@ -195,5 +183,4 @@ exec --no-startup-id libinput-gestures-setup start
 # scratchpad
 bindsym $mod+Shift+plus scratchpad show, floating disable
 bindsym $mod+Shift+minus move scratchpad
-
 

@@ -1,9 +1,12 @@
 * {
-font: "Iosevka Regular 17";
-background: #1c1c1c;
-foreground: #e4e4ef;
-            alternate-normal-background: var(background);
-            alternate-normal-foreground: var(foreground);
+    // font 
+    font: "Iosevka Regular 17";
+
+    // colors
+    background: #1c1c1c;
+    foreground: #e4e4ef;
+        alternate-normal-background: var(background);
+        alternate-normal-foreground: var(foreground);
 }
 
 configuration {

@@ -1,6 +1,12 @@
 -- leader
 vim.g.mapleader = " "
 
+-- spell checking
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
+vim.opt.spelloptions = "camel"
+vim.opt.spellcapcheck = ""
+
 -- allow hidden buffers so you can switch without saving
 vim.opt.hidden = true
 

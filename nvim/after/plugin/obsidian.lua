@@ -1,5 +1,6 @@
 -- obsidian and rendering
 require("markdown-plus").setup()
+
 require("obsidian").setup({
     ui = { enable = false },
     disable_frontmatter = false,

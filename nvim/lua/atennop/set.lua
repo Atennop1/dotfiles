@@ -1,8 +1,13 @@
 -- leader
 vim.g.mapleader = " "
 
+-- column line
+vim.opt.colorcolumn = "120"
+vim.opt.textwidth = 120
+vim.g.virtcolumn_char = '▕'
+
 -- spell checking
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = { "en_us", "ru" }
 vim.opt.spell = true
 vim.opt.spelloptions = "camel"
 vim.opt.spellcapcheck = ""

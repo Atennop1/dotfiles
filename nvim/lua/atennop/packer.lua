@@ -25,8 +25,11 @@ return require('packer').startup(function(use)
     -- undo tree visualizer
     use('mbbill/undotree')
 
-    -- sessions management use('tpope/vim-obsession')
+    -- sessions management
     use('tpope/vim-obsession')
+
+    -- nice column line
+    use('xiyaowong/virtcolumn.nvim')
 
     -- editing markdown files
     use { "yousefhadder/markdown-plus.nvim", }

@@ -1,12 +1,12 @@
-NEXT                        LEFT        LAST                        PASSED       UNIT                         ACTIVATES
-Wed 2025-12-10 14:33:13 MSK 5min left   Wed 2025-12-10 13:52:11 MSK 35min ago    anacron.timer                anacron.service
-Wed 2025-12-10 23:41:42 MSK 9h left     Mon 2025-12-08 12:10:56 MSK 2 days ago   man-db.timer                 man-db.service
-Thu 2025-12-11 00:00:00 MSK 9h left     -                           -            dpkg-db-backup.timer         dpkg-db-backup.service
-Thu 2025-12-11 00:00:00 MSK 9h left     Wed 2025-12-10 11:45:44 MSK 2h 42min ago logrotate.timer              logrotate.service
-Thu 2025-12-11 02:56:41 MSK 12h left    Wed 2025-12-10 13:52:11 MSK 35min ago    apt-daily.timer              apt-daily.service
-Thu 2025-12-11 06:31:31 MSK 16h left    Wed 2025-12-10 11:59:15 MSK 2h 28min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
-Thu 2025-12-11 13:34:24 MSK 23h left    Wed 2025-12-10 13:01:21 MSK 1h 26min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
-Sun 2025-12-14 03:10:33 MSK 3 days left Sun 2025-12-07 03:24:11 MSK 3 days ago   e2scrub_all.timer            e2scrub_all.service
-Mon 2025-12-15 01:08:06 MSK 4 days left Mon 2025-12-08 00:30:06 MSK 2 days ago   fstrim.timer                 fstrim.service
+NEXT                        LEFT          LAST                        PASSED       UNIT                         ACTIVATES
+Thu 2025-12-18 16:31:07 MSK 4min 47s left Thu 2025-12-18 15:32:09 MSK 54min ago    anacron.timer                anacron.service
+Fri 2025-12-19 00:00:00 MSK 7h left       Thu 2025-12-18 14:19:59 MSK 2h 6min ago  dpkg-db-backup.timer         dpkg-db-backup.service
+Fri 2025-12-19 00:00:00 MSK 7h left       Thu 2025-12-18 14:19:59 MSK 2h 6min ago  logrotate.timer              logrotate.service
+Fri 2025-12-19 01:56:34 MSK 9h left       Thu 2025-12-18 14:19:59 MSK 2h 6min ago  apt-daily.timer              apt-daily.service
+Fri 2025-12-19 06:23:05 MSK 13h left      Thu 2025-12-18 14:19:59 MSK 2h 6min ago  apt-daily-upgrade.timer      apt-daily-upgrade.service
+Fri 2025-12-19 06:57:26 MSK 14h left      Thu 2025-12-18 16:24:12 MSK 2min 7s ago  man-db.timer                 man-db.service
+Fri 2025-12-19 13:01:41 MSK 20h left      Wed 2025-12-17 11:59:08 MSK 1 day 4h ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Sun 2025-12-21 03:10:25 MSK 2 days left   Sun 2025-12-14 05:07:43 MSK 4 days ago   e2scrub_all.timer            e2scrub_all.service
+Mon 2025-12-22 00:55:56 MSK 3 days left   Mon 2025-12-15 00:48:57 MSK 3 days ago   fstrim.timer                 fstrim.service
 
 9 timers listed.

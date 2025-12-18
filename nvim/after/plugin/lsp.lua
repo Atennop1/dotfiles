@@ -15,10 +15,8 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
--- start with base neovim LSP capabilities
+-- extend base neovim LSP capabilities with completion capabilities from nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- extend them with completion capabilities from nvim-cmp
 capabilities = vim.tbl_deep_extend(
     "force",
     capabilities,
@@ -27,45 +25,54 @@ capabilities = vim.tbl_deep_extend(
 
 -- runs when an LSP attaches to a buffer
 local function on_attach(client, bufnr)
-    local opts = { buffer = bufnr, silent = true }
     local map = vim.keymap.set
+    local opts = { buffer = bufnr, silent = true }
 
-    -- hover documentation
+    -- navigation & actions
     map("n", "K", vim.lsp.buf.hover, opts)
-
-    -- go to definition / references
     map("n", "gd", vim.lsp.buf.definition, opts)
     map("n", "gr", vim.lsp.buf.references, opts)
-
-    -- refactoring actions
     map("n", "<leader>rn", vim.lsp.buf.rename, opts)
     map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
-    -- format on save (only if the server supports it)
-    if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
+    -- one group per buffer
+    local group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, { clear = true })
+
+    -- format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        buffer = bufnr,
+        callback = function()
+            -- organize imports only for gopls
+            if client.name == "gopls" then
+                local params = {
+                    context = { only = { "source.organizeImports" } },
+                    textDocument = vim.lsp.util.make_text_document_params(),
+                }
+                local result = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
+                for _, res in pairs(result or {}) do
+                    for _, r in pairs(res.result or {}) do
+                        if r.edit then
+                            vim.lsp.util.apply_workspace_edit(r.edit, "utf-8")
+                        elseif r.command then
+                            vim.lsp.buf.execute_command(r.command)
+                        end
+                    end
+                end
+            end
+
+            -- format buffer if supported
+            if client.supports_method("textDocument/formatting") then
                 vim.lsp.buf.format({
                     bufnr = bufnr,
-                    async = false,
+                    timeout_ms = 2000,
+                    filter = function(c)
+                        return c.name == client.name
+                    end,
                 })
-            end,
-        })
-    end
-
-    -- organize imports on save (go-specific)
-    if client.name == "gopls" then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.code_action({
-                    context = { only = { "source.organizeImports" } },
-                    apply = true,
-                })
-            end,
-        })
-    end
+            end
+        end,
+    })
 end
 
 -- attach on_attach to every LSP client
@@ -78,15 +85,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- update diagnostics even while typing
-vim.diagnostic.config({
-    update_in_insert = true,
-})
-
--- navigate diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-
--- show diagnostics
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+-- disable placeholders for clangd
+vim.lsp.config.clangd = {
+    cmd = {
+        "clangd",
+        "--function-arg-placeholders=false",
+    },
+}

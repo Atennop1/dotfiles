@@ -7,6 +7,7 @@ adwaita-icon-theme				install
 alacritty					install
 alsa-topology-conf				install
 alsa-ucm-conf					install
+alsa-utils					install
 amd64-microcode					install
 anacron						install
 apparmor					install
@@ -43,6 +44,8 @@ bzip2						install
 ca-certificates					install
 clang						install
 clang-14					install
+clang-format:amd64				install
+clang-format-14					install
 clangd:amd64					install
 clangd-14					install
 console-setup					install
@@ -228,6 +231,7 @@ libatk-bridge2.0-0:amd64			install
 libatk1.0-0:amd64				install
 libatkmm-1.6-1v5:amd64				install
 libatomic1:amd64				install
+libatopology2:amd64				install
 libatspi2.0-0:amd64				install
 libattr1:amd64					install
 libaudit-common					install

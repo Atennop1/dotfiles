@@ -12,10 +12,12 @@ acpid.path                                                                enable
 systemd-ask-password-console.path                                         static          -
 systemd-ask-password-plymouth.path                                        static          -
 systemd-ask-password-wall.path                                            static          -
-session-2.scope                                                           transient       -
-session-7.scope                                                           transient       -
+session-4.scope                                                           transient       -
 accounts-daemon.service                                                   enabled         enabled
 acpid.service                                                             disabled        enabled
+alsa-restore.service                                                      static          -
+alsa-state.service                                                        static          -
+alsa-utils.service                                                        masked          enabled
 anacron.service                                                           enabled         enabled
 apparmor.service                                                          enabled         enabled
 apt-daily-upgrade.service                                                 static          -
@@ -292,4 +294,4 @@ sysstat-collect.timer                                                     disabl
 sysstat-summary.timer                                                     disabled        enabled
 systemd-tmpfiles-clean.timer                                              static          -
 
-292 unit files listed.
+294 unit files listed.

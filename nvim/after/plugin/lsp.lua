@@ -15,13 +15,10 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
--- extend base neovim LSP capabilities with completion capabilities from nvim-cmp
+-- apply basic capabilities for all LSPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend(
-    "force",
-    capabilities,
-    require("cmp_nvim_lsp").default_capabilities()
-)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities) -- keeps cmp features
+vim.lsp.config('*', { capabilities = capabilities })
 
 -- runs when an LSP attaches to a buffer
 local function on_attach(client, bufnr)

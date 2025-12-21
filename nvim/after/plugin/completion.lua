@@ -14,8 +14,9 @@ cmp.setup({
         -- previous item
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),
+
     sources = cmp.config.sources({
         -- LSP suggestions
         { name = 'nvim_lsp' },
-    })
+    }),
 })

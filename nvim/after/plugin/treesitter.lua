@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
     -- don't block on install
     sync_install = false,
 

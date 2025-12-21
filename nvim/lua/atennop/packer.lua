@@ -12,24 +12,24 @@ return require('packer').startup(function(use)
 
     -- telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim' }
     }
 
     -- treesitter
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-
-    -- git integration
-    use('tpope/vim-fugitive')
+    use { 'nvim-treesitter/nvim-treesitter', branch = 'master', run = ':TSUpdate' }
 
     -- undo tree visualizer
-    use('mbbill/undotree')
+    use 'mbbill/undotree'
 
     -- sessions management
-    use('tpope/vim-obsession')
+    use 'tpope/vim-obsession'
 
     -- nice column line
-    use('xiyaowong/virtcolumn.nvim')
+    use 'xiyaowong/virtcolumn.nvim'
+
+    -- control neovim using Russian keyboard layout
+    use 'aveplen/ruscmd.nvim'
 
     -- editing markdown files
     use { "yousefhadder/markdown-plus.nvim", }

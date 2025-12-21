@@ -44,10 +44,18 @@ require("obsidian").setup({
 
     -- generate id of file using underscore
     note_id_func = function(title)
-        return title
-            :gsub(" ", "_")
-            :gsub("[^%w_%-%.%s]", "")
-    end,
+        title = title:gsub("%s+", "_"):gsub("([%z\1-\127\194-\244][\128-\191]*)", function(c)
+            if c:match("[%w_%-%.]")
+                or c:match("[А-Яа-яЁё]") then -- cyrillic letters
+                return c
+            end
+
+            return "_"
+        end)
+
+        return title:gsub("_+", "_"):gsub("^_+", ""):gsub("_+$", "")
+    end
+
 })
 
 vim.api.nvim_set_keymap('n', '<leader>nn', ':ObsidianNewFromTemplate ', { noremap = true })

@@ -1,13 +1,24 @@
 -- require packages
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
 
--- setup looking
 telescope.setup {
     defaults = {
+        -- setup looking
         borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
         sorting_strategy = "ascending",
         layout_strategy = "flex",
+
+        -- custom mappings
+        mappings = {
+            n = {
+                ["q"] = actions.close,
+            },
+            i = {
+                ["<C-c>"] = function() vim.cmd.stopinsert() end,
+            },
+        },
     },
 }
 

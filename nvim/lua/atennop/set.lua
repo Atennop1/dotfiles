@@ -18,9 +18,6 @@ vim.opt.hidden = true
 -- hide ~ at end of buffer
 vim.opt.fillchars = { eob = " " }
 
--- hide netrw banner
-vim.g.netrw_banner = 0
-
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true

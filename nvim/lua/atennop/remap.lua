@@ -1,5 +1,5 @@
--- open netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- open oil
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>")
 
 -- move selected lines up/down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -60,3 +60,23 @@ vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = "Close buffer" })
 vim.keymap.set('n', '<leader>bd!', ':bd!<CR>', { desc = "Force close buffer" })
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = "Next buffer" })
 vim.keymap.set('n', '<leader>bp', ':bprev<CR>', { desc = "Previous buffer" })
+
+-- forcing netrw to use absolute path for opening files
+vim.g.netrw_nogx = 1
+vim.keymap.set("n", "gx", function()
+    local raw = vim.fn.expand("<cfile>")
+    local target = raw:gsub("[%)%]%}%>,;:.]$", "")
+    local buf_dir = vim.fn.expand("%:p:h")
+    local abs = vim.fn.fnamemodify(vim.fn.resolve(buf_dir .. "/" .. target), ":p")
+
+    if raw:match("^%w+://") then
+        vim.fn.system({ "xdg-open", raw })
+        return
+    end
+    if vim.fn.isdirectory(abs) == 1 then
+        vim.fn.system({ "xdg-open", abs })
+        return
+    end
+
+    vim.fn.system(string.format("xdg-open '%s' >/dev/null 2>&1 &", abs))
+end, { noremap = true, silent = true })

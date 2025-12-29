@@ -10,6 +10,9 @@ return require('packer').startup(function(use)
     -- wakatime
     use 'wakatime/vim-wakatime'
 
+    -- oil file manager
+    use { 'stevearc/oil.nvim' }
+
     -- telescope
     use {
         'nvim-telescope/telescope.nvim',
@@ -28,14 +31,8 @@ return require('packer').startup(function(use)
     -- nice column line
     use 'xiyaowong/virtcolumn.nvim'
 
-    -- control neovim using Russian keyboard layout
-    use 'aveplen/ruscmd.nvim'
-
     -- editing markdown files
     use { "yousefhadder/markdown-plus.nvim", }
-
-    -- obsidian integration
-    use { "epwalsh/obsidian.nvim", }
 
     -- LSP support
     use {

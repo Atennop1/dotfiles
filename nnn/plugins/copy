@@ -3,15 +3,18 @@
 {
     SELFILE="${NNN_SEL:-$HOME/.config/nnn/.selection}"
     if [ -f "$SELFILE" ] && [ -s "$SELFILE" ]; then
-        files=$(cat "$SELFILE" | tr '\n' '\0')
-        echo "" >"$SELFILE"
+        # Pipe the null-separated paths directly
+        cat "$SELFILE" | tr '\n' '\0' |
+            xargs -0 -I{} realpath "{}" |
+            sed 's|^|file://|' |
+            xclip -i -selection clipboard -t text/uri-list
+        echo "" >"$SELFILE" # Clear selection after use
     else
-        files=$(printf "%s" "$PWD/$nnn")
+        # Handle single file case by piping it directly as well
+        printf "%s\0" "$PWD/$nnn" |
+            xargs -0 -I{} realpath "{}" |
+            sed 's|^|file://|' |
+            xclip -i -selection clipboard -t text/uri-list
     fi
-
-    [ -z "$files" ] && exit 0
-    printf "%s" "$files" |
-        xargs -0 -I{} realpath "{}" |
-        sed 's|^|file://|' |
-        xclip -i -selection clipboard -t text/uri-list
 } >/dev/null 2>&1 &
+

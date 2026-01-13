@@ -1,10 +1,12 @@
+-- this is file for automatic saving and loading my sessions using vim-obsession
+-- i keep it separate because it isn't really a part of my config, but just a support tool
 local session_dir = vim.fn.expand("~/.cache/nvim-sessions")
 if vim.fn.isdirectory(session_dir) == 0 then
 	vim.fn.mkdir(session_dir, "p")
 end
 
 local file_arg = vim.fn.argv(0)
-local base_dir
+local base_dir = vim.fn.getcwd()
 local target_file = nil
 
 if file_arg ~= "" and file_arg ~= vim.NIL then
@@ -15,8 +17,6 @@ if file_arg ~= "" and file_arg ~= vim.NIL then
 	else
 		base_dir = vim.fn.fnamemodify(resolved, ":p")
 	end
-else
-	base_dir = vim.fn.getcwd()
 end
 
 local session_file = string.format("%s/%s.vim", session_dir, base_dir:gsub("[/\\]", "_"):gsub("^_", ""):gsub("_$", ""))
